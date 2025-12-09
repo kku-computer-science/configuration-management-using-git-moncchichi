@@ -30,15 +30,28 @@ def quick_sort(array):
     # เรียงซ้ำเฉพาะ left และ right แล้วต่อผลลัพธ์เข้าด้วยกัน
     return quick_sort(left) + middle + quick_sort(right)
 
+def bubble_sort(input_array):
+    if len(input_array) <=1: #หากarray ที่รับมามีค่าน้อยกว่า1ตัว เราจะ คืนค่าarray นั้นออกไปเลยไม่ต้องเรียง
+        return input_array
+    for i in range(len(input_array)-1):
+        for j in range(len(input_array)-i-1):
+            if input_array[j] > input_array[j+1]: #หาก array ช่องถัดไป มีค่าน้อยกว่า ช่องปัจจุบัน จะทำการสลับช่อง
+                input_array[j],input_array[j+1] = input_array[j+1],input_array[j]
+                print("เปลี่ยนที่",input_array[j],"กับ",input_array[j+1])
+    return input_array #หลังจากทำขั้นตอน sort เสร็จ จะนำ array ส่งออกไป
 # เลือก algorithm
 if choice == "1":
     print("You choose Quick Sort")
     result = quick_sort(arr)
     print("Result:", result)
 
+    
+
 elif choice == "2":
     print("You choose Bubble Sort")
     #เติม about Bubble Sort
-
+    result = bubble_sort(arr)
+    print("Result: ", result)
+    
 else:
     print("You can choose only 1 or 2")
